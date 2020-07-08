@@ -1,0 +1,26 @@
+
+CREATE TABLE public.Artigo (
+                Nome VARCHAR NOT NULL,
+                Materia VARCHAR NOT NULL,
+                Data DATE NOT NULL,
+                Nome_aluno VARCHAR NOT NULL,
+                CONSTRAINT nome PRIMARY KEY (Nome)
+);
+
+
+CREATE TABLE public.Revisores (
+                Nome_Rev VARCHAR NOT NULL,
+                Nome VARCHAR NOT NULL,
+                nota REAL NOT NULL,
+                Pontos_positivos VARCHAR NOT NULL,
+                Pontos_negativos VARCHAR NOT NULL,
+                CONSTRAINT nome_rev PRIMARY KEY (Nome_Rev, Nome)
+);
+
+
+ALTER TABLE public.Revisores ADD CONSTRAINT artigo_revisores_fk
+FOREIGN KEY (Nome)
+REFERENCES public.Artigo (Nome)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
